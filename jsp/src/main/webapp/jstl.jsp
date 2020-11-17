@@ -55,7 +55,6 @@
 
 <h4>遍历List</h4>
 
-
 <%
     Map map = new HashMap();
     map.put("1", "zhongfucheng");
@@ -65,11 +64,36 @@
     request.setAttribute("map",map);
 %>
 
-<c:forEach  var="me" items="${map}" >
-
-    ${me.key}  ${me.value}<br>
-
+<c:forEach  var="v" items="${map}" >
+    ${v.key}  ${v.value}<br>
 </c:forEach>
+
+<h4>c:forTokens 字符串</h4>
+<%--它与forEach标签非常相似，都有begin、end、step、items、var、varStatus属性，不同的是forTokens标签的items属性里面是字符串，这个字符串会被delims属性的内容分割成多个字符串！--%>
+<c:forTokens items="zhongfucheng,ouzicheng,xiaoming,xiaohong" var="name" delims="," >
+    ${name}
+</c:forTokens>
+
+<h4>c:set</h4>
+
+<c:set var="name" value="fucheng" scope="page" />
+${name}<br>
+
+
+<%--创建出JavaBean对象，设置为page范围的属性--%>
+<jsp:useBean id="person" class="com.msr.servlet.User" scope="page"/>
+
+<%--获取到person对象，设置password属性的值为123456--%>
+<c:set target="${person}" property="password" value="123456"/>
+
+
+<c:set  target="${person}" property="username"  >
+    set杨
+</c:set>
+${person.username}--- ${person.password}
+
+
+
 
 
 
