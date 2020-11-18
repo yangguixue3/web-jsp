@@ -65,7 +65,7 @@
             //post 请求必须
         xmlhttp1.setRequestHeader("content-type", "application/x-www-form-urlencoded");
         xmlhttp1.send("name=亚麻布post&password=123456");
-        //4.回调函数
+
         //4.回调函数
         xmlhttp1.onreadystatechange=function()
         {
